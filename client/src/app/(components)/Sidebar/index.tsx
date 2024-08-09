@@ -2,9 +2,12 @@
 import { useAppDispatch, useAppSelector } from "@/app/redux"
 import { setIsSidebarCollapsed } from "@/state"
 import { Archive, CircleDollarSign, Clipboard, Icon, Layout, LucideIcon, Menu, SlidersHorizontal, User } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { isContext } from "vm"
+
+
+
 
 type SidebarLinkProps = {
   href: string,
@@ -56,10 +59,26 @@ const Sidebar = () => {
     
   return (
     <div className={sidebarClassNames}>
-        {/* TOP LOGO */}
-      <div className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${isSidebarCollapsed ? 'px-5' : 'px-8'}`}>
-        <div>logo</div>
-        <h1 className={`${isSidebarCollapsed ? "hidden" : "block"} font-extrabold text-2xl`}>
+      {/* TOP LOGO */}
+      <div
+        className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${
+          isSidebarCollapsed ? 'px-5' : 'px-8'
+        }`}
+      >
+        <div>
+          <Image
+            src="https://s3-inventorymanagement2.s3.amazonaws.com/logo.png"
+            alt="JIMSTOCK logo"
+            width={27}
+            height={27}
+            className="rounded w-8"
+          />
+        </div>
+        <h1
+          className={`${
+            isSidebarCollapsed ? 'hidden' : 'block'
+          } font-extrabold text-2xl`}
+        >
           JIMSTOCK
         </h1>
 
@@ -73,18 +92,49 @@ const Sidebar = () => {
 
       {/* LINKS */}
       <div className="flex-grow mt-8">
-        <SidebarLink href="/dashboard" icon={Layout} label="Dashboard" isCollapsed={isSidebarCollapsed}/>
-        <SidebarLink href="/inventory" icon={Archive} label="Inventory" isCollapsed={isSidebarCollapsed}/>
-        <SidebarLink href="/products" icon={Clipboard} label="Products" isCollapsed={isSidebarCollapsed}/>
-        <SidebarLink href="/users" icon={User} label="Users" isCollapsed={isSidebarCollapsed}/>
-        <SidebarLink href="/settings" icon={SlidersHorizontal} label="Settings" isCollapsed={isSidebarCollapsed}/>
-        <SidebarLink href="/expenses" icon={CircleDollarSign} label="Expenses" isCollapsed={isSidebarCollapsed}/>
-
+        <SidebarLink
+          href="/dashboard"
+          icon={Layout}
+          label="Dashboard"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/inventory"
+          icon={Archive}
+          label="Inventory"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/products"
+          icon={Clipboard}
+          label="Products"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/users"
+          icon={User}
+          label="Users"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/settings"
+          icon={SlidersHorizontal}
+          label="Settings"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/expenses"
+          icon={CircleDollarSign}
+          label="Expenses"
+          isCollapsed={isSidebarCollapsed}
+        />
       </div>
 
       {/* FOOTER */}
       <div className={`${isSidebarCollapsed ? 'hidden' : 'block'} mb-10`}>
-        <p className="text-center text-xs text-gray-500">&copy;2024 JIMMYSTOCK</p>
+        <p className="text-center text-xs text-gray-500">
+          &copy;2024 JIMMYSTOCK
+        </p>
       </div>
     </div>
   )
